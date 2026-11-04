@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DNC VPN — Fast, free VPN for Android, tuned for Iran</title>
+<meta name="description" content="Free Android VPN client tuned for Irancell, MCI, Rightel and ADSL. Fresh servers every 5 minutes, modern protocols, no account. Download v1.8.6.">
+<meta name="theme-color" content="#04060d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M32 50s14-7 14-17V22L32 17l-14 5v11c0 10 14 17 14 17Z' fill='none' stroke='%23071021' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#04060d;
+  --panel:rgba(255,255,255,.035);
+  --line:rgba(255,255,255,.09);
+  --text:#eef1fb;
+  --soft:#c7d0e6;
+  --muted:#9fabc8;
+  --cyan:#22d3ee;
+  --violet:#8b5cf6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:rgba(139,92,246,.45)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:6px}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ---------- background ---------- */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(72px);opacity:.5;animation:drift 26s ease-in-out infinite alternate}
+.aurora .a1{width:540px;height:540px;top:-180px;left:-140px;background:#0e7490}
+.aurora .a2{width:480px;height:480px;bottom:-200px;right:-140px;background:#5b21b6;animation-delay:-9s}
+.aurora .a3{width:400px;height:400px;top:32%;left:38%;background:#1d4ed8;opacity:.32;animation-delay:-17s}
+@keyframes drift{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(60px,-40px) scale(1.08)}
+  100%{transform:translate(-50px,50px) scale(.96)}
+}
+.grid-overlay{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 0%,transparent 100%);
+          mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 0%,transparent 100%);
+}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(4,6,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;gap:26px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:17px;letter-spacing:.2px}
+.logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--violet));flex:none}
+.logo svg{width:16px;height:16px;stroke:#071021;stroke-width:2.4;fill:none;stroke-linejoin:round}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{padding:8px 13px;border-radius:9px;color:var(--muted);text-decoration:none;font-size:14.5px;transition:.15s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-cta{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--soft);text-decoration:none;font-size:14px;font-weight:600;transition:.15s}
+.nav-cta:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07);color:var(--text)}
+.nav-cta svg{width:16px;height:16px;fill:currentColor}
+@media (max-width:760px){.nav-links{display:none}.nav-cta{margin-left:auto}}
+
+/* ---------- buttons & chips ---------- */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.18s}
+.btn svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--violet));color:#050816;box-shadow:0 10px 30px rgba(34,211,238,.22)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(139,92,246,.35)}
+.btn-ghost{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--text)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07)}
+.btn-lg{padding:15px 26px;font-size:16px;border-radius:14px}
+.chip{display:inline-flex;align-items:center;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-family:var(--mono);font-size:12.5px}
+
+/* ---------- hero ---------- */
+.hero{padding:96px 0 64px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-size:13px}
+.pill b{color:var(--text);font-weight:600}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 10px rgba(52,211,153,.8);flex:none}
+.hero h1{font-size:clamp(40px,7vw,64px);line-height:1.06;letter-spacing:-.022em;font-weight:800;margin:24px 0 18px}
+.grad{background:linear-gradient(90deg,#67e8f9,#818cf8,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:660px;margin:0 auto;color:var(--muted);font-size:17.5px}
+.lead b{color:var(--soft);font-weight:600}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:32px 0 20px}
+.hero-meta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- stats ---------- */
+.stats{border-block:1px solid var(--line);background:rgba(255,255,255,.02)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:30px 0}
+.stat{text-align:center}
+.stat b{display:block;font-size:clamp(26px,3.5vw,32px);font-weight:800;letter-spacing:-.01em}
+.stat span{font-size:13px;color:var(--muted)}
+@media (max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- sections ---------- */
+section{padding:88px 0}
+section.center{text-align:center}
+.eyebrow{display:block;text-transform:uppercase;letter-spacing:.16em;font-size:12.5px;font-weight:700;margin-bottom:10px}
+h2{font-size:clamp(28px,4vw,38px);letter-spacing:-.015em;font-weight:800;margin:0 0 14px}
+.sub{color:var(--muted);font-size:16.5px;max-width:640px;margin:0 auto 40px}
+.center .sub{margin-left:auto;margin-right:auto}
+
+/* ---------- feature cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:920px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}}
+.card{padding:26px 24px;border-radius:18px;border:1px solid var(--line);background:var(--panel);transition:.22s}
+.card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.45);box-shadow:0 18px 44px rgba(0,0,0,.4)}
+.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:15px;background:linear-gradient(135deg,rgba(34,211,238,.16),rgba(139,92,246,.16));border:1px solid rgba(255,255,255,.1);color:#67e8f9}
+.ico svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:17px;margin:0 0 8px}
+.card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+.card p b{color:var(--soft);font-weight:600}
+
+/* ---------- modes table ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02)}
+table{width:100%;border-collapse:collapse;min-width:660px}
+th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:700;padding:15px 18px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03);white-space:nowrap}
+td{padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.05);font-size:14.5px;vertical-align:top;color:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.proto{font-weight:700;color:var(--text);white-space:nowrap}
+.dotc{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:9px;vertical-align:1px}
+.c-green{background:#34d399}.c-cyan{background:#22d3ee}.c-indigo{background:#818cf8}.c-amber{background:#fbbf24}.c-pink{background:#f472b6}.c-purple{background:#c084fc}
+td .note{color:var(--muted)}
+.footnote{margin:18px auto 0;max-width:640px;color:var(--muted);font-size:14px;text-align:center}
+.footnote b{color:var(--soft)}
+@media (max-width:700px){
+  .table-wrap{overflow:hidden}
+  table{min-width:0}
+  thead{display:none}
+  table,tbody,tr,td{display:block}
+  tr{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.07)}
+  tr:last-child{border-bottom:0}
+  td{border-bottom:0;padding:0}
+  td.proto{font-size:15.5px;margin-bottom:7px}
+  td:nth-of-type(2){color:var(--soft);font-weight:600;font-size:14px;margin-bottom:7px}
+  td.note{color:var(--muted);font-size:13.5px;line-height:1.6}
+}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.step{padding:28px 26px;border-radius:18px;border:1px solid var(--line);background:var(--panel);position:relative;overflow:hidden}
+.step::after{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));opacity:.7}
+.step .num{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;margin-bottom:12px}
+.step h3{font-size:17.5px;margin:0 0 8px}
+.step p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+.step p b{color:var(--soft);font-weight:600}
+.step .k{font-family:var(--mono);font-size:13px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--soft);white-space:nowrap}
+
+/* ---------- download ---------- */
+.dl-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:stretch}
+@media (max-width:900px){.dl-grid{grid-template-columns:1fr}}
+.dl-main{
+  border-radius:20px;padding:1.5px;
+  background:linear-gradient(135deg,rgba(34,211,238,.8),rgba(139,92,246,.8)) border-box;
+  border:1.5px solid transparent;
+}
+.dl-main-in{border-radius:18.5px;background:#0a0f1e;padding:32px 30px;height:100%}
+.dl-main-in h3{font-size:20px;margin:0 0 6px}
+.dl-main-in>p{margin:0 0 22px;color:var(--muted);font-size:14.5px}
+.dl-chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
+.dl-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.link-more{color:var(--muted);font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.link-more:hover{color:var(--text)}
+.link-more svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hash{display:flex;align-items:center;gap:12px;margin-top:22px;padding:13px 16px;border-radius:12px;background:rgba(0,0,0,.38);border:1px solid var(--line);flex-wrap:wrap}
+.hash .tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;color:#67e8f9;flex:none}
+.hash code{font-family:var(--mono);font-size:12.5px;color:var(--soft);word-break:break-all}
+.mini{padding:24px;border-radius:18px;border:1px solid var(--line);background:var(--panel)}
+.dl-side{display:flex;flex-direction:column;gap:16px}
+.mini h3{font-size:16.5px;margin:0 0 6px}
+.mini>p{margin:0 0 16px;color:var(--muted);font-size:14px}
+.subrow{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.3);margin-top:10px;flex-wrap:wrap}
+.subrow .lbl{font-size:13px;font-weight:600;color:var(--soft);flex:none}
+.subrow code{font-family:var(--mono);font-size:11.5px;color:var(--muted);word-break:break-all;flex:1 1 260px;min-width:0}
+.tiny{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+.tiny a{color:#67e8f9;text-decoration:none}
+.tiny a:hover{text-decoration:underline}
+
+/* ---------- copy button ---------- */
+.copy{display:inline-flex;align-items:center;gap:6px;margin-left:auto;padding:7px 13px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s;flex:none}
+.copy:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+.copy svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.copy .ic-check{display:none}
+.copy.ok{color:#34d399;border-color:rgba(52,211,153,.45)}
+.copy.ok .ic-copy{display:none}
+.copy.ok .ic-check{display:block}
+
+/* ---------- support ---------- */
+.support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.support-grid{grid-template-columns:1fr}}
+.mini .actions{margin-top:14px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:36px 0;margin-top:24px}
+.foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.foot .brand{font-size:15px}
+.foot .brand .logo{width:24px;height:24px;border-radius:7px}
+.foot .brand .logo svg{width:13px;height:13px}
+.foot .cop{color:var(--muted);font-size:13.5px}
+.foot .soc{margin-left:auto;display:flex;gap:8px}
+.foot .soc a{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);transition:.15s}
+.foot .soc a:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+.foot .soc svg{width:17px;height:17px;fill:currentColor}
+.foot .soc svg.stroke{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .aurora i{animation:none}
+  .btn:hover,.card:hover{transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span>
+      DNC&nbsp;VPN
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#modes">Modes</a>
+      <a href="#how">How to start</a>
+      <a href="#download">Download</a>
+      <a href="#support">Support</a>
+    </nav>
+    <a class="nav-cta" href="https://github.com/0xAKIRAVX/DNC-VPN" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero center">
+    <div class="wrap">
+      <span class="pill"><span class="dot" aria-hidden="true"></span>v<b>1.8.6</b>&nbsp;·&nbsp;Free forever&nbsp;·&nbsp;Android 7+</span>
+      <h1>The open internet,<br><span class="grad">at full speed.</span></h1>
+      <p class="lead">DNC VPN is a free Android client tuned for Iranian networks — <b>Irancell</b>, <b>MCI</b>, <b>Rightel</b> and home <b>ADSL</b>. An automation job rebuilds the server list every five minutes, so the config you connect through is always alive.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://github.com/0xAKIRAVX/DNC-VPN/releases/download/v1.8.6/DNC-VPN-1.8.6-arm64-v8a.apk" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download APK
+        </a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/0xAKIRAVX/DNC-VPN" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true" style="fill:currentColor;stroke:none"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span class="chip">arm64-v8a</span>
+        <span class="chip">≈ 62 MB</span>
+        <span class="chip">signed build</span>
+        <span class="chip">MD5-verified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><b class="grad">5 min</b><span>server-list refresh</span></div>
+      <div class="stat"><b class="grad">2</b><span>free tiers — Free &amp; Extra</span></div>
+      <div class="stat"><b class="grad">0</b><span>accounts required</span></div>
+      <div class="stat"><b class="grad">6</b><span>protocols built in</span></div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features" class="center">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow grad">Why DNC VPN</span>
+        <h2>Everything a VPN should be</h2>
+        <p class="sub">Every feature exists to solve one problem: a stable connection on Iranian networks.</p>
+      </div>
+      <div class="cards">
+        <div class="card reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <h3>Tuned for Iranian networks</h3>
+          <p>Built against <b>Irancell</b>, <b>MCI</b>, <b>Rightel</b> and <b>ADSL</b>. The gold tier is ranked by real-traffic tests, so the top of your list is already the best of the crop.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>
+          <h3>Servers that never go stale</h3>
+          <p>A GitHub Actions job rebuilds the subscription <b>every five minutes</b>. Open the app, tap <b>Update</b>, and last night's dead configs are gone.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+          <h3>Every modern protocol</h3>
+          <p><b>VLESS + Reality</b>, VMess over CDN, Trojan, Shadowsocks, Hysteria2 and TUIC — pick whatever your network lets through today.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+          <h3>Fragment, for stubborn networks</h3>
+          <p>A built-in <b>TLS-fragmentation</b> switch, made with Irancell in mind. Test it on and off — it takes ten seconds and often saves the day.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+          <h3>Per-app routing</h3>
+          <p>Choose exactly which apps travel through the tunnel and which stay on your ordinary connection.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <h3>Free, with no strings</h3>
+          <p>No account, no fees, no trial timer. Nothing is sent to a server we run — your config list is fetched <b>straight from GitHub</b>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES -->
+  <section id="modes" class="center">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow grad">Modes</span>
+        <h2>Which config should I pick?</h2>
+        <p class="sub">A quick guide. Start at the top and work your way down until one flies.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr><th>Protocol</th><th>Best for</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proto"><span class="dotc c-green"></span>VLESS + Reality · 443</td>
+              <td>First choice on every operator</td>
+              <td class="note">Looks like ordinary TLS — the best chance against DPI.</td>
+            </tr>
+            <tr>
+              <td class="proto"><span class="dotc c-cyan"></span>VMess / ws + TLS over CDN</td>
+              <td>When direct server IPs are blocked</td>
+              <td class="note">Rides a CDN; ports 443, 2053, 2083, 2087, 2096.</td>
+            </tr>
+            <tr>
+              <td class="proto"><span class="dotc c-indigo"></span>Trojan</td>
+              <td>A light, stable fallback</td>
+              <td class="note">Prefers port 443.</td>
+            </tr>
+            <tr>
+              <td class="proto"><span class="dotc c-amber"></span>Shadowsocks</td>
+              <td>Speed on good days</td>
+              <td class="note">Can get detected at busy hours; swap it out if ping works but pages don't.</td>
+            </tr>
+            <tr>
+              <td class="proto"><span class="dotc c-pink"></span>Hysteria2 / TUIC · UDP</td>
+              <td>Only if your network allows UDP</td>
+              <td class="note">Most Iranian networks throttle UDP heavily.</td>
+            </tr>
+            <tr>
+              <td class="proto"><span class="dotc c-purple"></span>Fragment</td>
+              <td>Irancell, when all else fails</td>
+              <td class="note">Toggle it in Settings and test both states.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote reveal"><b>Remember:</b> the in-app ping test measures TCP only. A config that pings but won't load pages is a dead config — switch to the next one.</p>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="center">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow grad">Get connected</span>
+        <h2>Up and running in three steps</h2>
+        <p class="sub">From download to a working tunnel in under two minutes.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="num grad">STEP 01</span>
+          <h3>Download</h3>
+          <p>Grab the APK from <b>GitHub Releases</b> — or the Picofile mirror if GitHub is being difficult. The file is about 62&nbsp;MB.</p>
+        </div>
+        <div class="step reveal">
+          <span class="num grad">STEP 02</span>
+          <h3>Install</h3>
+          <p><b>Android 7+</b>, arm64-v8a. It installs right over any older DNC build; if Android refuses, remove the old app once and retry.</p>
+        </div>
+        <div class="step reveal">
+          <span class="num grad">STEP 03</span>
+          <h3>Connect</h3>
+          <p>Open the <b>Free</b> group, tap <span class="k">Update</span>, run <span class="k">⋮ → Test all</span>, sort by ping — and connect to the config at the top.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download" class="center">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow grad">Download</span>
+        <h2>One tap from a faster internet</h2>
+        <p class="sub">Latest signed build, mirrored in two places.</p>
+      </div>
+      <div class="dl-grid">
+        <div class="dl-main reveal">
+          <div class="dl-main-in">
+            <h3>GitHub Release · v1.8.6</h3>
+            <p>The newest signed build, straight from the source.</p>
+            <div class="dl-actions">
+              <a class="btn btn-primary btn-lg" href="https://github.com/0xAKIRAVX/DNC-VPN/releases/download/v1.8.6/DNC-VPN-1.8.6-arm64-v8a.apk" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download APK · ~62 MB
+              </a>
+              <a class="link-more" href="https://github.com/0xAKIRAVX/DNC-VPN/releases" target="_blank" rel="noopener">
+                All releases
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div class="dl-chips">
+              <span class="chip">arm64-v8a</span>
+              <span class="chip">Android 7+</span>
+              <span class="chip">same signature as older DNC builds</span>
+            </div>
+            <div class="hash">
+              <span class="tag">MD5</span>
+              <code>79b1e5b5d638d117897a311ed58eeaf4</code>
+              <button class="copy" type="button" data-copy="79b1e5b5d638d117897a311ed58eeaf4">
+                <svg class="ic-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="lbl">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="dl-side">
+          <div class="mini reveal">
+            <h3>GitHub hard to reach?</h3>
+            <p>The same file lives on a Picofile mirror page.</p>
+            <div class="actions">
+              <a class="btn btn-ghost" href="https://www.picofile.com/f/a7CUujsiUS/DNC-VPN-1.8.6-arm64-v8a-apk.zip" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Open Picofile mirror
+              </a>
+            </div>
+            <p class="tiny">Same file, same MD5. If an in-place upgrade fails, remove the old app once.</p>
+          </div>
+          <div class="mini reveal">
+            <h3>Bring your own client</h3>
+            <p>The subscription feeds work in v2rayNG, Hiddify, NekoBox and Streisand too:</p>
+            <div class="subrow">
+              <span class="lbl">Free</span>
+              <code>https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub.txt</code>
+              <button class="copy" type="button" data-copy="https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub.txt">
+                <svg class="ic-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="lbl">Copy</span>
+              </button>
+            </div>
+            <div class="subrow">
+              <span class="lbl">Free + Extra</span>
+              <code>https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub-extra.txt</code>
+              <button class="copy" type="button" data-copy="https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub-extra.txt">
+                <svg class="ic-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="ic-check" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="lbl">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section id="support" class="center">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow grad">Support</span>
+        <h2>Need a hand?</h2>
+        <p class="sub">Quick answers live in the repo; live help lives on Telegram.</p>
+      </div>
+      <div class="support-grid">
+        <div class="mini reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+          <h3>Telegram channel</h3>
+          <p>Announcements, fresh builds and quick tips.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="https://t.me/OxAKIRAVX" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              t.me/OxAKIRAVX
+            </a>
+          </div>
+        </div>
+        <div class="mini reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+          <h3>GitHub issues</h3>
+          <p>Bugs, feature requests and anything else.</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="https://github.com/0xAKIRAVX/DNC-VPN/issues" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open an issue
+            </a>
+          </div>
+        </div>
+        <div class="mini reveal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <h3>Privacy</h3>
+          <p>DNC VPN sends nothing to us — the config list is read straight from GitHub. Traffic travels over public community servers; for banking or your main email, use your own server.</p>
+          <p class="tiny">Full notes: <a href="https://github.com/0xAKIRAVX/DNC-VPN/blob/main/CR.md" target="_blank" rel="noopener">CR.md on GitHub</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span>
+      DNC&nbsp;VPN
+    </a>
+    <span class="cop">© 2026</span>
+    <div class="soc">
+      <a href="https://github.com/0xAKIRAVX/DNC-VPN" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+      <a href="https://t.me/OxAKIRAVX" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg class="stroke" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // reveal on scroll
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px'});
+    els.forEach(function(e){ io.observe(e); });
+  }
+
+  // copy buttons
+  function copyText(t){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(t).then(function(){return true}, function(){return legacy(t)});
+    }
+    return Promise.resolve(legacy(t));
+  }
+  function legacy(t){
+    var ta = document.createElement('textarea');
+    ta.value = t; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    var ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+    ta.remove(); return ok;
+  }
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      copyText(btn.getAttribute('data-copy')).then(function(ok){
+        if(!ok) return;
+        btn.classList.add('ok');
+        var lbl = btn.querySelector('.lbl');
+        if(lbl) lbl.textContent = 'Copied';
+        setTimeout(function(){
+          btn.classList.remove('ok');
+          if(lbl) lbl.textContent = 'Copy';
+        }, 1400);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
