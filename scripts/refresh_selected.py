@@ -134,14 +134,9 @@ def main():
         print(f"!! only {len(selected)} reachable (<{MIN_SELECTED}) — keeping old file")
         sys.exit(1)
 
-    header = (
-        "#profile-title: DNC VPN | Selected (speed-tested)\n"
-        "#profile-update-interval: 1\n"
-        f"#support-url: https://github.com/{REPO}\n"
-        f"#profile-web-page-url: https://github.com/{REPO}\n"
-    )
+    # plain URI list — same format as sub.txt / sub-extra.txt (no # headers)
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(header + "\n".join(selected) + "\n")
+        f.write("\n".join(selected) + "\n")
     print(f"-> sub-selected.txt: {len(selected)} configs")
     # quick re-verify: every entry must still TCP-connect after write
     dead = 0
