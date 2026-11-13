@@ -1,0 +1,38 @@
+name: update-selected
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'   # every 3 hours (offset from update-sub's */5)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-selected
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Re-test and update Selected tier
+        run: python3 scripts/refresh_selected.py
+
+      - name: Commit updated selected list
+        run: |
+          git config user.name  "dnc-sub-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sub-selected.txt
+          if git diff --cached --quiet; then
+            echo "no changes — selection identical"
+          else
+            git commit -m "selected: refresh $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git push
+          fi
