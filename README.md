@@ -26,7 +26,7 @@
 
 ## 📲 Download & install
 
-- **APK (arm64-v8a, ≈ 62 MB):** get the latest build from [Releases](https://github.com/0xAKIRAVX/DNC-VPN/releases/latest) — or the [Picofile mirror](PICOFILE_V18_URL) if GitHub is hard to reach
+- **APK (arm64-v8a, ≈ 62 MB):** get the latest build from [Releases](https://github.com/0xAKIRAVX/DNC-VPN/releases/latest) — or the [Picofile mirror](https://www.picofile.com/f/lBY1i0bKuw/DNC-VPN-1.8.8-arm64-v8a-apk.zip) if GitHub is hard to reach
 - Requires **Android 7+**
 - Installs on top of any older DNC build — **no uninstall needed** (same signature)
 
