@@ -1,24 +1,19 @@
-#profile-title: DNC VPN | Selected (speed-tested)
-#profile-update-interval: 1
-#support-url: https://github.com/0xAKIRAVX/DNC-VPN
-#profile-web-page-url: https://github.com/0xAKIRAVX/DNC-VPN
-vmess://eyJhZGQiOiAiMTYyLjI1MS42MC45NyIsICJhaWQiOiAiMCIsICJhbHBuIjogIiIsICJob3N0IjogIiIsICJpZCI6ICI1YzA0MGYxZC00NWRiLTQzYmQtOGQ0Ni1lNDk1MGU0MzM3MzUiLCAibmV0IjogInRjcCIsICJwYXRoIjogIiIsICJwb3J0IjogIjEyNzAiLCAicHMiOiAi8J+HuvCfh7gyMTMzMzAgfCDimqHvuI9UZWxlZ3JhbSA9IHQubWUvU09Ta2V5TkVUIiwgInNjeSI6ICJhdXRvIiwgInNuaSI6ICJ4bWZobHB5LmNvbSIsICJ0bHMiOiAidGxzIiwgInR5cGUiOiAibm9uZSIsICJ2IjogIjIifQ==#SS44-016
-vless://fa081e9f-7574-4e18-8928-31aa5ac923c7@84.32.61.133:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&path=/&pbk=drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ&security=reality&sid=868419504747f6de&sni=us5.sbcweb.net&type=tcp#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
-ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@38.128.66.32:19999#%F0%9F%87%BA%F0%9F%87%B8US-38.128.66.32-0133
-vless://493024a4-2da7-4ff9-9bc7-fdd5543141d2@88.216.73.74:33843?encryption=none&fp=chrome&mode=gun&path=/&pbk=TL1CK8WVdpIj9WBX6I79EItHrgUy4Gb9qQ31EKr8sww&security=reality&serviceName=grpc&sid=ddf4cc&sni=blogs.nvidia.co.jp&spx=/8fap4ibij0s99c3&type=grpc#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
-vmess://eyJhZGQiOiAiMzguMTI4LjY2LjI0OSIsICJhaWQiOiAiMCIsICJhbHBuIjogIiIsICJob3N0IjogIiIsICJpZCI6ICI1YzA0MGYxZC00NWRiLTQzYmQtOGQ0Ni1lNDk1MGU0MzM3MzUiLCAibmV0IjogInRjcCIsICJwYXRoIjogIiIsICJwb3J0IjogIjEyNzAiLCAicHMiOiAi8J+HuvCfh7gyMTMzMzkgfCDimqHvuI9UZWxlZ3JhbSA9IHQubWUvU09Ta2V5TkVUIiwgInNjeSI6ICJhdXRvIiwgInNuaSI6ICJ4bWZobHB5LmNvbSIsICJ0bHMiOiAidGxzIiwgInR5cGUiOiAibm9uZSIsICJ2IjogIjIifQ==#SS44-003
-vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuvCfh7gyMTM0MjUgfCDimqHvuI9UZWxlZ3JhbSA9IHQubWUvU09Ta2V5TkVUIiwgImFkZCI6ICIxNjIuMjUxLjYxLjQ2IiwgInBvcnQiOiAiMTI3MCIsICJpZCI6ICI1YzA0MGYxZC00NWRiLTQzYmQtOGQ0Ni1lNDk1MGU0MzM3MzUiLCAiYWlkIjogIjAiLCAibmV0IjogInRjcCIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICIiLCAicGF0aCI6ICIiLCAidGxzIjogInRscyIsICJzbmkiOiAieG1maGxweS5jb20iLCAiYWxwbiI6ICIiLCAic2N5IjogImF1dG8ifQ==#SS44-022
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.23:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=courses.nextjobopportunityandclaimyouridealrole.com#SS44-048
-ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@216.106.178.169:19999#%F0%9F%87%BA%F0%9F%87%B8US-216.106.178.169-0187
-ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@167.88.62.203:19999#%F0%9F%87%BA%F0%9F%87%B8US-167.88.62.203-0138
-vless://dbf3f074-3b18-43f3-b82a-debd8c879c69@216.152.155.189:443?flow=xtls-rprx-vision&fp=chrome&packetEncoding=xudp&path=/&pbk=F5BVp5XkY93lll_Ju34lOIE6A1-dx16_frY6eu9Nzzk&security=reality&sid=fecf2b55bb11bb0d&sni=www.apple.com&type=tcp#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.169:443#%F0%9F%87%BA%F0%9F%87%B8US-156.146.38.169-0234
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.54:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=learn.nextjobopportunityandclaimyouridealrole.com#SS44-010
-vless://664f65f4-33b3-43a3-b9e5-68192d1d428e@200.102.180.37:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none&host=/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI&path=/&pbk=bGwVs-Re6vNB1tuKqZZ209x7l361FxZdtPHg0yZLa2Q&security=reality&sid=63c4425dacae86cb&sni=juniper-canyon.cdn.cachefleet.com&type=tcp#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.122.7:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=www.searchnationwidecareerchangehelperandguidancetoday.com#SS44-105
-vless://1f8cf47a-b66a-4916-979f-26edfcf44eea@185.95.231.156:443?flow=xtls-rprx-vision&fp=chrome&host=www.apple.com&path=/&pbk=8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To&security=reality&sid=a3a578ab&sni=www.apple.com&type=tcp#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.168:443#%F0%9F%87%BA%F0%9F%87%B8US-156.146.38.168-0231
-vless://1b4b11d5-4c2d-4533-9a55-636757cdee94@195.211.98.43:443?security=reality&encryption=none&pbk=xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA&host=/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.cloudflare.com&sid=9c56fddf237e8eaf#SS44-012
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@216.152.155.176:443?security=tls&insecure=0&headerType=&type=tcp&allowInsecure=0&sni=blog.nextjobopportunityandclaimyouridealrole.com#SS44-033
-ss://YWVzLTI1Ni1nY206cEtFVzhKUEJ5VFZUTHRN@15.204.247.206:4444#%F0%9F%87%BA%F0%9F%87%B8US-15.204.247.206-0224
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.167:443#SS44-001
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@15.235.164.133:19999#%F0%9F%87%B8%F0%9F%87%ACSG-15.235.164.133-0174
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@149.88.106.74:19999#%F0%9F%87%B8%F0%9F%87%ACSG-149.88.106.74-0160
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@149.88.107.47:19999#%F0%9F%87%B8%F0%9F%87%ACSG-149.88.107.47-0185
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@15.235.182.183:19999#%F0%9F%87%B8%F0%9F%87%ACSG-15.235.182.183-0197
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@149.88.107.74:19999#%F0%9F%87%B8%F0%9F%87%ACSG-149.88.107.74-0209
+vless://36c06e11-028b-40a1-a91f-c8f38f03e829@jp.yi-yi.xyz:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none&path=/&pbk=g3T4dVyrbNixv7HvSMlh91cYBa5kEsZCEInB7Xc_AEY&security=reality&sid=956d8072a694ff37&sni=www.cloudflare.com&type=tcp#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@51.79.228.131:19999#%F0%9F%87%B8%F0%9F%87%ACSG-51.79.228.131-0206
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@149.28.130.108:443?security=tls&sni=searchcreativejobsandshowcaseyourartistictalents.com#%F0%9F%87%B8%F0%9F%87%ACSG-149.28.130.108-0127
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@158.247.253.243:443?security=tls&sni=connectgraduateswithjobopeningsandgrowprofessionally.com#%F0%9F%87%B0%F0%9F%87%B7KR-158.247.253.243-0152
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@149.88.106.73:19999#%F0%9F%87%B8%F0%9F%87%ACSG-149.88.106.73-0154
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@45.63.30.142:443?security=tls&sni=connectwithemployerstohireyouridealteam.com#SS44-117
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206alViRE5zRmFtY3lEZnBtK3JJM1p5dz09@38.145.220.193:8443#SS44-017
+vless://140d6fc9-2c6d-41bd-a487-182b52c0184f@69.17.3.150:443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=caissuers.microsoft.com&fp=chrome&pbk=zUbdpLqoZN7kSFDrHgGnAcZqJzKilme_rIJwI3FPGCA&sid=d898752d58acbfe0#SS44-057
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@169.197.142.68:19999#%F0%9F%87%BA%F0%9F%87%B8US-169.197.142.68-0101
+ss://YWVzLTI1Ni1nY206M2VPRmVOc3NkZTdQWVlNdg==@84.247.155.196:80#%F0%9F%87%AF%F0%9F%87%B5JP-84.247.155.196-0221
+vless://fa895069-bfe5-42c9-9f30-f918e1e442c1@143.246.60.254:443?flow=xtls-rprx-vision&fp=firefox&path=/&pbk=ccJ6xUaUhUxN6GEj6a1vqsQDNDTJJX1KYSURY5pJpBE&security=reality&sid=eb68848e2575a1f4&sni=www.cloudflare.com&type=tcp#%F0%9F%A6%82%F0%9F%8C%91%20M_1423
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0=@151.241.19.36:19999#%F0%9F%87%A6%F0%9F%87%AAAE-151.241.19.36-0096
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.175:443?security=tls&sni=blog.browseseniorrolesandenhanceyourcareertoday.com#%F0%9F%87%BA%F0%9F%87%B8US-167.88.61.175-0093
+ss://YWVzLTI1Ni1nY206WlJwZ2FCZUd4dEVOSVhndmhwa1pCS3o5R25XUlMyZFljeDlPK2EyaXdOND0@95.215.201.18:19999#SS44-027
