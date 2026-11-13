@@ -5,6 +5,10 @@
   <img src="docs/logo-light.png" width="150" alt="DNC VPN logo">
 </picture>
 
+<picture>
+  <img src="docs/app-icon.png" width="96" alt="DNC VPN app icon (launcher)">
+</picture>
+
 # 🛡️ DNC VPN
 
 **Fast, free VPN client for Android — tuned for Iranian networks**
@@ -22,7 +26,7 @@
 
 ## 📲 Download & install
 
-- **APK (arm64-v8a, ≈ 62 MB):** get the latest build from [Releases](https://github.com/0xAKIRAVX/DNC-VPN/releases/latest) — or the [Picofile mirror](https://www.picofile.com/f/vCfvUnpvcs/DNC-VPN-1.8.7-arm64-v8a-apk.zip) if GitHub is hard to reach
+- **APK (arm64-v8a, ≈ 62 MB):** get the latest build from [Releases](https://github.com/0xAKIRAVX/DNC-VPN/releases/latest) — or the [Picofile mirror](PICOFILE_V18_URL) if GitHub is hard to reach
 - Requires **Android 7+**
 - Installs on top of any older DNC build — **no uninstall needed** (same signature)
 
@@ -33,7 +37,7 @@
 
 | Build | Arch | Size | MD5 |
 |---|---|---|---|
-| v1.8.7 | arm64-v8a | ≈ 62 MB | `c94eb759bb465a1762ea5013f6913604` |
+| v1.8.8 | arm64-v8a | ≈ 62 MB | `ba6f278cc0856227a3568a5e261b0d67` |
 
 ## 🚀 Free built-in subscriptions
 
@@ -76,6 +80,16 @@ Work through this list in order:
 
 > [!TIP]
 > On v1.8.7 and newer, updating from an older build automatically re-points the **Free Extra** group to the current source — the old "toggle Show free subscription off/on" workaround is no longer needed.
+
+### "Connects, but pages don't load" (works in other apps)
+
+If the toggle turns green but nothing loads — while the same config works in v2rayNG / Hiddify — it is almost always one of these, in order of likelihood:
+
+1. **Core selection for that config.** Long-press the config → **Edit → Core** — try switching it (the app ships several cores; a config imported from another client sometimes lands on the wrong one). The **Selected** group is now verified under **both** core families before being listed.
+2. **Stale imported configs.** Configs you imported manually a while ago can die; the built-in groups rotate every few minutes. Tap <kbd>Update</kbd> in the group and pick a fresh one (top of the list).
+3. **App clock skew.** Wrong time breaks TLS/Reality handshakes silently — keep it **Automatic**.
+4. **Sniffing / routing interplay.** Settings → toggle **"Bypass LAN"** off once, and if you use per-app proxy, make sure the app you're browsing from is included ("include" mode), not accidentally excluded.
+5. If one specific config only works in the other client, re-import it **from the same subscription URL** — hand-typed/QR-imported copies often lose a query parameter (sni / pbk / path).
 
 ## 🧭 Modes — which config should I pick?
 
