@@ -33,14 +33,15 @@
 
 | Build | Arch | Size | MD5 |
 |---|---|---|---|
-| v1.8.6 | arm64-v8a | ≈ 62 MB | `79b1e5b5d638d117897a311ed58eeaf4` |
+| v1.8.7 | arm64-v8a | ≈ 62 MB | `c94eb759bb465a1762ea5013f6913604` |
 
 ## 🚀 Free built-in subscriptions
 
-Two internal groups, rebuilt **automatically every 5 minutes** from sources tested specifically for Iran. The app also refreshes the list every time you open it, or on demand with <kbd>Update</kbd>.
+Three internal groups, refreshed automatically. The app also refreshes the list every time you open it, or on demand with <kbd>Update</kbd>.
 
 | Group | Contents | Best for |
 |---|---|---|
+| **Selected** 🏆 | **speed-tested picks** — every config is verified through a real tunnel (connectivity → download → upload) and re-tested **every 3 hours** | the best of the crop: low ping, high speed |
 | **Free** 🥇 | **SS44 GOLD** — configs that passed a **real-traffic test**, ranked for Irancell + operator-filtered **Reality** configs (MCI / Irancell / Rightel) | quick start, fewest `-1` pings |
 | **Free Extra** | everything in Free + the tested **Eternity** list (more variety) | when Free is congested |
 
@@ -56,6 +57,7 @@ Two internal groups, rebuilt **automatically every 5 minutes** from sources test
 <br>
 
 ```
+https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub-selected.txt
 https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub.txt
 https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub-extra.txt
 ```
@@ -70,8 +72,10 @@ Work through this list in order:
 2. Run `⋮ → Test all` and sort by ping — **the top of the list (Reality / port 443) has the best odds**
 3. **Irancell:** in settings, test **Fragment** once on and once off
 4. Keep your phone clock on **Automatic** — a wrong clock fails every TLS / Reality handshake
-5. After installing a new build, toggle **"Show free subscription"** off and on once to refresh the **Free Extra** group
-6. If every TCP config is locked, tap <kbd>Update</kbd> again a few minutes later — the list never goes stale
+5. If every TCP config is locked, tap <kbd>Update</kbd> again a few minutes later — the list never goes stale
+
+> [!TIP]
+> On v1.8.7 and newer, updating from an older build automatically re-points the **Free Extra** group to the current source — the old "toggle Show free subscription off/on" workaround is no longer needed.
 
 ## 🧭 Modes — which config should I pick?
 
