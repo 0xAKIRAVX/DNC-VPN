@@ -1,82 +1,105 @@
-<div dir="rtl">
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
+  <img src="docs/logo-light.png" width="150" alt="DNC VPN logo">
+</picture>
 
 # 🛡️ DNC VPN
 
-**کلاینت VPN سریع و رایگان مخصوص ایران** — بر پایه‌ی ArasClient (فورک NekoBox)
+**Fast, free VPN client for Android — tuned for Iranian networks**
 
-[![Download](https://img.shields.io/badge/%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-APK_%D8%A2%D8%AE%D8%B1%DB%8C%D9%86_%D9%86%D8%B3%D8%AE%D9%87-brightgreen?style=for-the-badge)](../../releases/latest)
-[![sub update](https://img.shields.io/badge/%D8%B3%D8%A7%D8%A8%E2%80%8C%D9%87%D8%A7-%D9%87%D8%B1_5_%D8%AF%D9%82%DB%8C%D9%82%D9%87-blue?style=for-the-badge)](#-کانفیگهای-رایگان)
-[![platform](https://img.shields.io/badge/%D9%BE%D9%84%D8%AA%D9%81%D9%88%D8%B1%D9%85-Android_7%2B-lightgrey?style=for-the-badge)](#-دانلود-و-نصب)
+[![Download](https://img.shields.io/badge/Download-Latest_APK-brightgreen?style=for-the-badge)](https://github.com/0xAKIRAVX/DNC-VPN/releases/latest)
+[![Servers](https://img.shields.io/badge/Servers-refreshed_every_5_min-blue?style=for-the-badge)](#-free-built-in-subscriptions)
+[![Platform](https://img.shields.io/badge/Platform-Android_7%2B-lightgrey?style=for-the-badge)](#-download--install)
+[![Website](https://img.shields.io/badge/Website-landing_page-8b5cf6?style=for-the-badge)](https://0xakiravx.github.io/DNC-VPN/)
 
-کانال تلگرام: [@OxAKIRAVX](https://t.me/OxAKIRAVX)
+📢 Telegram channel: **[@OxAKIRAVX](https://t.me/OxAKIRAVX)**
+
+</div>
 
 ---
 
-## 📲 دانلود و نصب
+## 📲 Download & install
 
-- **APK (arm64-v8a):** از صفحه‌ی [Releases](../../releases/latest) دانلود کنید
-- روی نسخه‌های قبلی DNC **بدون حذف برنامه** نصب می‌شود (امضای یکسان)
-- اندروید ۷ به بالا
-- اگر نصب جایگزین خطا داد، یک‌بار برنامه‌ی قبلی را حذف و دوباره نصب کنید
+- **APK (arm64-v8a, ≈ 62 MB):** get the latest build from [Releases](https://github.com/0xAKIRAVX/DNC-VPN/releases/latest) — or the [Picofile mirror](https://www.picofile.com/f/a7CUujsiUS/DNC-VPN-1.8.6-arm64-v8a-apk.zip) if GitHub is hard to reach
+- Requires **Android 7+**
+- Installs on top of any older DNC build — **no uninstall needed** (same signature)
 
-## 🚀 کانفیگ‌های رایگان (ساب‌های داخلی)
+> [!TIP]
+> If the in-place upgrade fails, remove the old app once and install again.
 
-دو گروه اشتراک داخلی دارد که **خودکار هر ۵ دقیقه** از منابع تست‌شده‌ی مخصوص ایران
-تجمیع و به‌روزرسانی می‌شوند (به‌روزرسانی داخل اپ: هر بار باز کردن برنامه + به‌روزرسانی خودکار گروه):
+**Latest build:**
 
-| گروه | محتوا | مناسب برای |
+| Build | Arch | Size | MD5 |
+|---|---|---|---|
+| v1.8.6 | arm64-v8a | ≈ 62 MB | `79b1e5b5d638d117897a311ed58eeaf4` |
+
+## 🚀 Free built-in subscriptions
+
+Two internal groups, rebuilt **automatically every 5 minutes** from sources tested specifically for Iran. The app also refreshes the list every time you open it, or on demand with <kbd>Update</kbd>.
+
+| Group | Contents | Best for |
 |---|---|---|
-| **Free** 🥇 | SS44 GOLD — کانفیگ‌هایی که **تست ترافیک واقعی** را پاس کرده‌اند و اولویت‌بندی‌شده برای ایرانسل + کانفیگ‌های **Reality** پالایش‌شده برای مخابرات/همراه اول/ایرانسل | شروع سریع، کمترین -۱ |
-| **Free Extra** | همه‌ی لیست Free + کانفیگ‌های تست‌شده‌ی Eternity (تنوع بیشتر) | وقتی لیست Free شلوغ بود |
+| **Free** 🥇 | **SS44 GOLD** — configs that passed a **real-traffic test**, ranked for Irancell + operator-filtered **Reality** configs (MCI / Irancell / Rightel) | quick start, fewest `-1` pings |
+| **Free Extra** | everything in Free + the tested **Eternity** list (more variety) | when Free is congested |
 
-**منابع تجمیع** (به ترتیب اولویت داخل لیست):
+**Aggregation sources** (priority order inside the list):
 
-1. [SS44 GOLD](https://github.com/ZendanTeam/SS44-sub) — تست TCP + تست ترافیک واقعی، رتبه‌بندی Reality و پورت 443 اول، آپدیت هر ۳۰ دقیقه
-2. [My-Clean-Configs](https://github.com/Mojtaba1423/My-Clean-Configs) — کانفیگ‌های Reality جراحی‌شده برای اپراتورهای ایران (تست TCP + TLS Handshake)
-3. [V2RayAggregator Eternity](https://github.com/mahdibland/V2RayAggregator) — فقط در لیست Extra، تست‌شده بالادستی
+1. [SS44 GOLD](https://github.com/ZendanTeam/SS44-sub) — TCP + real-traffic testing, Reality / port-443 ranked first, updates every 30 minutes
+2. [My-Clean-Configs](https://github.com/Mojtaba1423/My-Clean-Configs) — surgically filtered Reality configs for Iranian operators (TCP + TLS-handshake tests)
+3. [V2RayAggregator / Eternity](https://github.com/mahdibland/V2RayAggregator) — Extra list only, tested upstream
 
-### استفاده از ساب در کلاینت‌های دیگر (v2rayNG / Hiddify / NekoBox / Streisand)
+<details>
+<summary><b>📡 Use the feeds in any other client</b> — v2rayNG / Hiddify / NekoBox / Streisand</summary>
+
+<br>
 
 ```
 https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub.txt
 https://raw.githubusercontent.com/0xAKIRAVX/DNC-VPN/main/sub-extra.txt
 ```
 
-## 🔧 رفع مشکل پینگ «-1»
+</details>
 
-به ترتیب انجام دهید:
+## 🔧 Fixing a `-1` ping
 
-1. در گروه **Free** دکمه‌ی **Update** را بزنید (کانفیگ‌ها هر ۵ دقیقه عوض می‌شوند — لیست دیشب امروز مرده است)
-2. `⋮ → Test all` بگیرید و بر اساس پینگ مرتب کنید — **کانفیگ‌های بالای لیست (Reality/443) بیشترین شانس را دارند**
-3. **ایرانسل:** تنظیمات → **Fragment** را یک بار روشن و یک بار خاموش تست کنید
-4. ساعت گوشی حتماً روی **Automatic** باشد (ساعت اشتباه = fail شدن همه‌ی TLS/Realityها)
-5. بعد از نصب نسخه‌ی جدید، برای تازه‌سازی گروه **Free Extra** یک‌بار تنظیم
-   «Show free subscription» را خاموش/روشن کنید
-6. اگر همه‌ی TCPها قفل بودند، چند دقیقه بعد دوباره Update بزنید (لیست دائم تازه می‌شود)
+Work through this list in order:
 
-## Modes
+1. In the **Free** group, tap <kbd>Update</kbd> — configs rotate every 5 minutes, so last night's list is dead today
+2. Run `⋮ → Test all` and sort by ping — **the top of the list (Reality / port 443) has the best odds**
+3. **Irancell:** in settings, test **Fragment** once on and once off
+4. Keep your phone clock on **Automatic** — a wrong clock fails every TLS / Reality handshake
+5. After installing a new build, toggle **"Show free subscription"** off and on once to refresh the **Free Extra** group
+6. If every TCP config is locked, tap <kbd>Update</kbd> again a few minutes later — the list never goes stale
 
-راهنمای سریع انتخاب حالت و کانفیگ:
+## 🧭 Modes — which config should I pick?
 
-- **VLESS + Reality (پورت 443):** اولین انتخاب روی همه‌ی اپراتورها؛ ترافیک شبیه TLS واقعی است و بیشترین شانس عبور از DPI را دارد.
-- **VMess/ws + TLS روی CDN (پورت‌های 443/2053/2083/2087/2096):** وقتی IP سرورهای مستقیم بلاک‌اند؛ از CDN عبور می‌کند.
-- **Trojan:** جایگزین سبک و پایدار؛ پورت 443 ترجیح دارد.
-- **SS:** سبک و سریع، اما در بعضی ساعات شبکه شناسایی می‌شود.
-- **Hysteria2/TUIC (UDP):** فقط وقتی UDP اپراتور باز باشد؛ در بیشتر شبکه‌های ایران UDP مهار شده است.
-- **Fragment (تکه‌تکه کردن TLS):** مخصوص ایرانسل — در تنظیمات هست؛ خاموش/روشن بودنش را حتماً هر دو حالت تست کنید.
-- **تست پینگ داخلی فقط TCP می‌سنجد:** کانفیگی که پینگ می‌دهد ولی وب باز نمی‌کند را با یک کانفیگ دیگر عوض کنید.
+| Mode | Use it when | Notes |
+|---|---|---|
+| **VLESS + Reality** (port 443) | first choice on every operator | looks like ordinary TLS traffic — best odds against DPI |
+| **VMess / ws + TLS over CDN** (443 / 2053 / 2083 / 2087 / 2096) | direct server IPs are blocked | rides through a CDN |
+| **Trojan** | a light, stable fallback | prefers port 443 |
+| **SS** | speed on a good day | gets detected at busy hours |
+| **Hysteria2 / TUIC** (UDP) | your network allows UDP | most Iranian networks throttle UDP |
+| **Fragment** (TLS fragmentation) | Irancell, when all else fails | in settings — test both on and off |
 
-## 📄 حریم خصوصی
+> [!NOTE]
+> The in-app ping test measures **TCP only**. A config that pings but won't load pages is dead — switch to the next one.
 
-- DNC VPN هیچ داده‌ای به سرور ما نمی‌فرستد؛ لیست کانفیگ‌ها از GitHub خوانده می‌شود
-- ترافیک شما از سرورهای رایگانِ عمومی عبور می‌کند — برای کارهای حساس (بانک، ایمیل اصلی) از سرور شخصی استفاده کنید
-- متن کامل: [CR.md](CR.md)
+## 🔒 Privacy
 
-## ❤️ اعتبارها
+- DNC VPN sends **no data** to any server of ours — the config list is read straight from GitHub
+- Your traffic passes through **public, volunteer-run servers**: fine for everyday browsing, but for sensitive work (banking, your main email) use your own server
+- Full policy: **[CR.md](CR.md)**
 
-- [ArasClient](https://github.com/ArasTey/ArasClient) / [NekoBox for Android](https://github.com/MatsuriDayo/NekoBoxForAndroid) — پایه‌ی برنامه
-- [ZendanTeam/SS44-sub](https://github.com/ZendanTeam/SS44-sub) — موتور تست و رتبه‌بندی ایرانسل
-- [Mojtaba1423/My-Clean-Configs](https://github.com/Mojtaba1423/My-Clean-Configs) — Realityهای پالایش‌شده اپراتورها
-- [mahdibland/V2RayAggregator](https://github.com/mahdibland/V2RayAggregator) — لیست Extra
+> [!WARNING]
+> Free servers can see unencrypted application-layer traffic (DNS / HTTP). Do not use them for banking, purchases or two-factor logins.
+
+---
+
+<div align="center">
+
+**DNC VPN** · 📢 Telegram: **[@OxAKIRAVX](https://t.me/OxAKIRAVX)** · 🌐 [Website](https://0xakiravx.github.io/DNC-VPN/)
 
 </div>
